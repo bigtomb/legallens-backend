@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "authentication",
 
 ]
 
@@ -60,6 +61,8 @@ REST_FRAMEWORK = {
 }
 
 ROOT_URLCONF = "legallens.urls"
+
+AUTH_USER_MODEL = "authentication.User"
 
 TEMPLATES = [
     {
@@ -109,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
 
 
 # Internationalization
