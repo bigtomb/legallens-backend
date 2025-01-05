@@ -1,0 +1,8 @@
+django
+djangorestframework-simplejwt
+djangorestframework
+django-cors-headers
+torch
+transformers
+python-docx
+pdfminer.six
