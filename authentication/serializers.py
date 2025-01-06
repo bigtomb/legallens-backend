@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", 'email', 'role', 'password']
+        fields = ["username", 'email','first_name','last_name','role', 'password']
         extra_kwargs = {'password': {'write_only': True},
                         'role': {'read_only': True}}
 
@@ -18,20 +18,17 @@ class UserSerializer(serializers.ModelSerializer):
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
-
     def get_token(cls, user):
         global profile_id
         token = super().get_token(user)
 
-        # NEEDS TO BE ADJUSTED LATER
-        # # Add custom claims
-        # if user.role == 'CUSTOMER':
-        #     token['name'] = user.first_name + ' ' + user.last_name
-        #     token['profile_id'] = CustomerProfile.objects.get(user=user).id
-        # elif user.role == 'BUSINESS':
-        #     token['profile_id'] = BusinessProfile.objects.get(user=user).id
+        # Add custom claims
         token["username"] = user.username
+        token["first_name"] = user.first_name
+        token["last_name"] = user.last_name
+        token["company"] = user.company
+        token['title'] = user.title
         token['role'] = user.role
         # ...
-
         return token
+

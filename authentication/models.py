@@ -5,6 +5,11 @@ from django.db import models
 
 #Abstract User Model which handles authentication
 class User(AbstractUser):
+    USERNAME_FIELD = 'email'
+    email = models.EmailField(unique=True)  # changes email to unique and blank to false
+    company = models.CharField(max_length=100,blank=True,null=True)
+    title = models.CharField(max_length=100,blank=True,null=True)
+    REQUIRED_FIELDS = []  # removes email from REQUIRED_FIELDS
     class Role(models.TextChoices):
         ADMIN = 'ADMIN', 'Admin'
         USER = 'USER', 'User'
