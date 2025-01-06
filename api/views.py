@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Analyses
+from .models import Analysis
 from .serializers import DocumentSerializer, AnalysisSerializer
 from .utils import extract_text_from_file, process_text_with_chatgpt
 
@@ -23,7 +23,6 @@ class ProcessDocumentView(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         # Validate input
-        print(self.request.user)
         serializer = DocumentSerializer(data=request.data)
         if serializer.is_valid():
             file = serializer.validated_data['document']

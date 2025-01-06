@@ -1,9 +1,7 @@
 from django.contrib import admin
 
-from api.models import Analyses
+from api.models import Analysis
 
 
 # Register your models here.
-@admin.register(Analyses)
-class AnalysesAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Analysis)
