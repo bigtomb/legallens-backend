@@ -8,6 +8,8 @@ urlpatterns = [
 
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 
+    path('logout/', MyTokenBlacklistView.as_view(), name='token_obtain_pair'),
+
 
     path('refresh/', MyTokenRefreshView.as_view(), name='token_refresh'),
 
